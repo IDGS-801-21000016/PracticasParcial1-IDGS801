@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-
 @dataclass
 class GeneratePyramid:
   n: int
@@ -10,8 +9,6 @@ class GeneratePyramid:
       for j in range(i+1):
         print("*", end="")
       print("")
-
-
 
 def main():
     n = input("Ingrese el numero de filas: ")

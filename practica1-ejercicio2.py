@@ -28,7 +28,6 @@ class countNumbers:
         even.append(list[i])
       else:
         odd.append(list[i])
-
     return even, odd
 
   def showRepiteNumbers(self, list):
