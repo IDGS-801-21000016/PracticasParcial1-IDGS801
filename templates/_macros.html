@@ -1,0 +1,4 @@
+{% macro camposNuevos(field) %}
+<div>{{field.label}}</div>
+<div>{{ field(**kwargs) | safe }}</div>
+{% endmacro %}

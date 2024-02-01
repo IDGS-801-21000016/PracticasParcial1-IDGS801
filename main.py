@@ -1,4 +1,6 @@
 from flask import Flask, request, render_template
+import math
+from formsDistancia.form import InputsForm
 
 app = Flask(__name__)
 
@@ -6,6 +8,22 @@ app = Flask(__name__)
 @app.route('/')
 def operasBas():
   	return render_template('operasBas.html')
+
+@app.route('/distancia', methods=['GET', 'POST'])
+def distancia():
+    form = InputsForm(request.form)
+    x1 = None
+    x2 = None
+    y1 = None
+    y2 = None
+    distancia = None
+    if request.method == 'POST':
+      x1 = form.x1.data
+      x2 = form.x2.data
+      y1 = form.y1.data
+      y2 = form.y2.data
+      distancia = math.sqrt((x2-x1)**2 + (y2-y1)**2)
+    return render_template('distancia.html', form=form,distancia=distancia)
 
 @app.route('/resultado' , methods=['GET', 'POST'])
 def resultado():
