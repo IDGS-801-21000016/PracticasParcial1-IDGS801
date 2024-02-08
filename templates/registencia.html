@@ -42,13 +42,38 @@ block content %}
 		<th>Valor Maximo</th>
 	</tr>
 	<tbody>
-		<td {{c1}}>{{ color1 }}</td>
-		<td {{c2 }}>{{ color2 }}</td>
-		<td {{c3}}>{{ color3 }}</td>
+		<td id="c1" style="color: aliceblue">{{ color1 }}</td>
+		<td id="c2" style="color: aliceblue">{{ color2 }}</td>
+		<td id="c3" style="color: aliceblue">{{ color3 }}</td>
 		<td>{{ tole }}</td>
 		<td>{{ valor }}</td>
 		<td>{{ valorMinimo }}</td>
 		<td>{{valorMaximo }}</td>
 	</tbody>
+
+	<script>
+		const row = document.querySelectorAll('td');
+		console.log(row[0].innerText);
+
+		const colores = {
+			Negro: 'black',
+			Cafe: 'brown',
+			Rojo: 'red',
+			Naranja: 'orange',
+			Amarillo: 'yellow',
+			Verde: 'green',
+			Azul: 'blue"',
+			Violeta: 'violet',
+			Gris: 'gray',
+			Blanco: 'white'
+		};
+
+		document.getElementById('c1').style.backgroundColor =
+			colores[row[0].innerText];
+		document.getElementById('c2').style.backgroundColor =
+			colores[row[1].innerText];
+		document.getElementById('c3').style.backgroundColor =
+			colores[row[2].innerText];
+	</script>
 </table>
 {% endif %} {% endblock %}

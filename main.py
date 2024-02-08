@@ -79,7 +79,7 @@ def resistencia():
         band = int(bandaMulti[color3])
         tolerancia = tole[tolerancia]
 
-        valor =int( f"{v1}{v2}")* band
+        valor =int(f"{v1}{v2}")* band
 
         if tolerancia == 5:
             tole = 'Dorado 5%'

@@ -4,6 +4,11 @@ from wtforms import FloatField
 from wtforms import SelectField, RadioField
 
 
+x =2
+y = 3
+
+valor = 'Pu' if x > y else 'to'
+
 class Inputs(Form):
   color1 = SelectField('color1',choices=['Negro','Cafe','Rojo','Naranja','Amarillo','Verde','Azul','Violeta','Gris','Blanco'])
   color2 = SelectField('color2',choices=['Negro','Cafe','Rojo','Naranja','Amarillo','Verde','Azul','Violeta','Gris','Blanco'])
