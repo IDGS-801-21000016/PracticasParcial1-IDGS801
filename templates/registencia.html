@@ -1,0 +1,54 @@
+{% extends "layout.html" %} {% import '_macros.html' as macros %} {%
+block content %}
+
+<form action="" novalidate method="POST">
+	<div class="col control-group" style="display: flex">
+		<div class="form-group form-floating">
+			<h2>Primera banda</h2>
+			{{macros.camposNuevos(form.color1, class="form-control")}}
+		</div>
+
+		<div class="form-group form-floating">
+			<h2>Segunda banda</h2>
+			{{macros.camposNuevos(form.color2, class="form-control")}}
+		</div>
+
+		<div class="form-group form-floating">
+			<h1>Tercera banda</h1>
+			{{macros.camposNuevos(form.color3, class="form-control")}}
+		</div>
+
+		<div class="form-group form-floating">
+			<h2>tolerancia</h2>
+			{{macros.camposNuevos(form.tolerancia, class="form-control")}}
+		</div>
+	</div>
+	<div class="row control-group">
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Registrar</button>
+		</div>
+	</div>
+</form>
+
+{% if color1 != None %}
+<table border="1">
+	<tr>
+		<th>Color 1</th>
+		<th>Color 2</th>
+		<th>Color 3</th>
+		<th>Tolerancia</th>
+		<th>Valor</th>
+		<th>Valor Minimo</th>
+		<th>Valor Maximo</th>
+	</tr>
+	<tbody>
+		<td {{c1}}>{{ color1 }}</td>
+		<td {{c2 }}>{{ color2 }}</td>
+		<td {{c3}}>{{ color3 }}</td>
+		<td>{{ tole }}</td>
+		<td>{{ valor }}</td>
+		<td>{{ valorMinimo }}</td>
+		<td>{{valorMaximo }}</td>
+	</tbody>
+</table>
+{% endif %} {% endblock %}
