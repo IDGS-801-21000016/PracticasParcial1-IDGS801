@@ -1,4 +1,20 @@
 {% macro camposNuevos(field) %}
 <div>{{field.label}}</div>
 <div>{{ field(**kwargs) | safe }}</div>
-{% endmacro %}
+{% if field.errors %}
+
+<ul>
+	{% for error in field.errors %}
+	<li
+		style="
+			color: red;
+			font-size: 12px;
+			font-weight: bold;
+			list-style: none;
+		"
+	>
+		{{error}}
+	</li>
+	{% endfor %}
+</ul>
+{% endif %} {% endmacro %}

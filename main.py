@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 import math
-from formsDistancia.form import InputsForm, Inputs as Ip
+from dataclasses import dataclass
+from formsDistancia.form import InputsForm, Inputs as Ip, Idiomas, saveInFile, searchInFile
 
 app = Flask(__name__)
 
@@ -8,6 +9,30 @@ app = Flask(__name__)
 @app.route('/')
 def operasBas():
   	return render_template('operasBas.html')
+
+@app.route("/idiomas", methods=['GET', 'POST'])
+def idiomas():
+   form = Idiomas(request.form)
+   espa = ""
+   ing = ""
+   q = ""
+   q_result = ""
+
+   if request.method == 'POST' and form.validate():
+      espa = form.spanish.data
+      ing = form.ingles.data
+      idioma = form.idioma.data
+      q = form.q.data
+      saveInFile(espa,ing)
+      if form.q.data != "":
+         return render_template("idiomas.html",form=form,espa=espa,ing=ing,idioma=idioma,q=q,q_result=searchInFile(q,idioma))
+         
+      return render_template("idiomas.html",form=form,espa=espa,ing=ing,idioma=idioma)
+
+   return render_template("idiomas.html",form=form)
+
+
+  
 
 @app.route('/resistencia',  methods=['GET', 'POST'])
 def resistencia():
