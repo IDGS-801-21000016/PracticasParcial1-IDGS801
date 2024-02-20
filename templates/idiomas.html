@@ -1,7 +1,15 @@
 {% extends "layout.html" %} {% import '_macros.html' as macros %} {%
 block content %}
 
-<form action="" novalidate method="POST">
+<form action="" method="POST" novalidate>
+	<input
+		type="number"
+		value="1"
+		id="isSave"
+		name="isSave"
+		style="display: none"
+	/>
+
 	<div class="row control-group">
 		<div class="form-group form-floating">
 			{{macros.camposNuevos(form.ingles, class="form-control")}}
@@ -12,7 +20,9 @@ block content %}
 		</div>
 
 		<div class="form-group form-floating">
-			<button class="btn btn-primary">Registrar</button>
+			<button class="btn btn-primary" id="registrar" type="submit">
+				Registrar
+			</button>
 		</div>
 		<hr />
 
@@ -25,9 +35,43 @@ block content %}
 	</div>
 
 	<div class="form-group">
-		<button type="submit" class="btn btn-primary">Calcular</button>
+		<button class="btn btn-primary" id="buscar">
+			<i class="fa fa-search"></i> Buscar
+		</button>
 	</div>
 
-	{% if q_result %} {{q_result}} {% endif %}
+	<script>
+		document
+			.getElementById('registrar')
+			.addEventListener('click', function () {
+				document.getElementById('isSave').value = 1;
+			});
+
+		document
+			.getElementById('buscar')
+			.addEventListener('click', function () {
+				document.getElementById('isSave').value = 0;
+			});
+	</script>
+
+	{% if q_result == "No se encontro la palabra" %}
+	<span style="color: red; height: 30px; font-weight: bold">
+		{{q_result}}
+	</span>
+
+	{% elif q_result == "Agrega un valor primero" %}
+	<span style="color: red; height: 30px; font-weight: bold">
+		{{q_result}}
+	</span>
+
+	{% else %}
+	<span style="height: 30px; font-weight: bold"> {{q_result}} </span>
+
+	{% endif %} {% if saveCorrect %} {% if saveCorrect %}
+	<script id="alerta" type="text/javascript">
+		alert('Registro exitoso');
+		document.getElementById('alerta').remove();
+	</script>
+
+	{% endif %} {% endif %} {% endblock %}
 </form>
-{% endblock %}

@@ -17,20 +17,23 @@ def idiomas():
    ing = ""
    q = ""
    q_result = ""
+   if request.method == 'POST' and request.form['isSave'] == '0':
+      q = request.form['q']
+      idioma = request.form['idioma']
+      if q == "":
+         return render_template("idiomas.html",form=form,q_result="Agrega un valor primero")
 
+      q_result = searchInFile(q,idioma) if searchInFile(q,idioma) else "No se encontro la palabra"
+      return render_template("idiomas.html",form=form,q_result=q_result)
+   
    if request.method == 'POST' and form.validate():
       espa = form.spanish.data
       ing = form.ingles.data
       idioma = form.idioma.data
-      q = form.q.data
       saveInFile(espa,ing)
-      if form.q.data != "":
-         return render_template("idiomas.html",form=form,espa=espa,ing=ing,idioma=idioma,q=q,q_result=searchInFile(q,idioma))
-         
-      return render_template("idiomas.html",form=form,espa=espa,ing=ing,idioma=idioma)
+      return render_template("idiomas.html",form=form,espa=espa,ing=ing,idioma=idioma,saveCorrect=True)
 
    return render_template("idiomas.html",form=form)
-
 
   
 

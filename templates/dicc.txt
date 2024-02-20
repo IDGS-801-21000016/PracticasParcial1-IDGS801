@@ -1,7 +1,12 @@
 
 Hola:Hi
 red:rojo
-red:rojo
-red:rojo
-red:rojo
-red:rojo
+azul:blue
+adios:bye
+español:spanish
+sapo:frog
+purpura:purple
+gris:gray
+campo:field
+raton:mouse
+amarillo:yellow

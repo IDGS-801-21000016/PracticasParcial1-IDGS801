@@ -42,7 +42,6 @@ def saveInFile(espa,ing):
 # busqueda el elemento
 def searchInFile(q,idioma):
   file =  open("templates/dicc.txt", "r")
-   #el formato es: español:ingles
   q_result = ""
   for line in file:
       if q in line:
